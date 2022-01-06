@@ -5,20 +5,15 @@
 {% block content %}
   <h2 class="ui centered aligned header">Boards</h2>
   <div class="ui raised segments">
+    {% for board in boards %}
     <div class="ui center aligned segment">
         <h4 class="ui header">
-          <div class="content">
-            <a class="item" style="color: #f2711c">/ga/ - gaming</a>
-          </div>
+            <div class="content">
+                <a class="item" style="color: #f2711c" href="/{{board.shortcut}}/">/{{board.shortcut}}/ - {{board.name}}</a>
+            </div>
         </h4>
     </div>
-    <div class="ui center aligned segment">
-        <h4 class="ui header">
-          <div class="content">
-            <a class="item" style="color: #f2711c">/ga/ - gaming</a>
-          </div>
-        </h4>
-    </div>
+    {% endfor %}
   </div>
 
   <div class="ui hidden divider"></div>
@@ -39,4 +34,4 @@
         </h4>
     </div>
   </div>
-  {% endblock %}
+{% endblock %}
