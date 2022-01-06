@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    {% load static %}
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.js"></script>
+    <title>{% block title %}Imaginary Board{% endblock %} - IB</title>
+  </head>
+
+  <body>
+    <div class="ui orange segment">
+      <h1 class="ui centered aligned header">
+        <div class="content">
+          <a href="/">Imaginary Board</a>
+          <div class="sub header">Let's Discuss!</div>
+        </div>
+      </h1>
+    </div>
+    {% block content %}
+    {% endblock %}
+    <div class="ui hidden divider"></div>
+    <div class="ui divider"></div>
+    <h5 class="ui disabled centered header">Written by <a href="https://linktr.ee/timofeev41">timofeev41</a></h5>
+  </body>
+</html>
