@@ -8,14 +8,14 @@ class Board(models.Model):
     short_description = models.CharField(max_length=30, default=None)
 
     def __str__(self) -> str:
-        return f"#{self.id_board} {self.name}"
+        return f"#{self.shortcut} {self.name}"
 
 
 class Message(models.Model):
     id_message = models.BigAutoField(primary_key=True)
     author = models.CharField(max_length=40, default="Аноним")
-    content = models.CharField(max_length=300)
-    picture_url = models.CharField(max_length=150, default=None)
+    content = models.CharField(max_length=1000)
+    picture_url = models.URLField(blank=True)
     date_created = models.DateTimeField(auto_now=True)
 
     def __str__(self) -> str:
@@ -24,7 +24,7 @@ class Message(models.Model):
 
 class Thread(Message):
     id_thread = models.BigAutoField(primary_key=True)
-    related_board = models.OneToOneField(Board, on_delete=models.CASCADE)
+    related_board = models.ForeignKey(Board, on_delete=models.CASCADE)
 
     def __str__(self) -> str:
         return f"THREAD: #{self.id_thread} by {self.author}"

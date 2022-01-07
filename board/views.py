@@ -13,6 +13,13 @@ def render_homepage(request) -> HttpResponse:
 
 
 def render_board(request, board_shortcut: str) -> HttpResponse:
-    content = {"threads": models.Thread.objects.filter(related_board=board_shortcut), "name": board_shortcut}
+    board = models.Board.objects.all().filter(shortcut=board_shortcut).first()
+    if board is None:
+        return HttpResponse("wtf")
+    content = {
+        "threads": models.Thread.objects.filter(related_board=board_shortcut).all(),
+        "name": board_shortcut,
+        "board_data": board,
+    }
     template = loader.get_template("board.html")
     return HttpResponse(template.render(content, request))
