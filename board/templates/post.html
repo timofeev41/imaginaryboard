@@ -1,0 +1,22 @@
+{% extends "head.html" %} 
+
+{% block title %}/{{name}}/{% endblock %} 
+
+
+{% block content %}
+<h2 class="ui centered aligned header">New thread - /{{board}}/ </h2>
+<div class="ui center aligned container">
+<form action="/{{board}}/process-thread" method="post" class="ui form">
+    {% csrf_token %}
+    <div class="field">
+        {{ form.author.label_tag }}
+        {{ form.author }}
+        {{ form.picture_url.label_tag }}
+        {{ form.picture_url }}
+        {{ form.content.label_tag }}
+        {{ form.content }}
+    </div>
+    <input type="submit" value="Submit" class="ui basic blue button">
+</form>
+</div>
+{% endblock %}

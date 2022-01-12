@@ -7,6 +7,12 @@
 
 <h2 class="ui centered aligned header">Welcome to /{{name}}/. {{board_data.short_description}}.</h2>
 
+<div class="ui raised padded text container center aligned segment">
+  <div class="ui centered label">
+    <a href="{{board_data.shortcut}}/new-thread"><i class="mail icon"></i> New thread</a>
+  </div>
+</div>
+
 {% for thread in threads %}
 <div class="ui raised very padded text container segment"> 
   <a class="ui image label" style="background-color: #f2711c">
@@ -14,7 +20,7 @@
       {{thread.author}}  
   </a>
   <a style="color: #004A99">#{{thread.id_thread}} - {{thread.content|slice:":20"}}</a>
-  <p>{{thread.content|slice:":350"}} {% if thread.content|length > 350 %}... <a style="color: #f2711c">Продолжить чтение</a>{% endif %}</p>
+  <p>{{thread.content|slice:":350"}} {% if thread.content|length > 350 %}... <a style="color: #f2711c" href="/threads/{{thread.id_message}}">Продолжить чтение</a>{% endif %}</p>
 </div>
 {% endfor %}
 {% endblock %}
