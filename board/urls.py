@@ -1,11 +1,11 @@
-from django.urls import path
+from django.urls import path, re_path
 
 
 from . import views
 
 urlpatterns = [
     path("", views.render_homepage, name="Main Page"),
-    path("<str:board_shortcut>/process-thread", views.new_thread, name="Create new thread"),
-    path("<str:board_shortcut>/new-thread", views.render_post, name="New Thread"),
-    path("<str:board_shortcut>", views.render_board, name="Render concrete board"),
+    re_path(r"(?P<board_shortcut>[a-zA-Z]{1,2})/process-thread/$", views.new_thread, name="Create new thread"),
+    re_path(r"(?P<board_shortcut>[a-zA-Z]{1,2})/new-thread/$", views.render_post, name="New Thread"),
+    re_path(r"(?P<board_shortcut>[a-zA-Z]{1,2})/$", views.render_board, name="Render concrete board"),
 ]

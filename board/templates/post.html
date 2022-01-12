@@ -6,7 +6,7 @@
 {% block content %}
 <h2 class="ui centered aligned header">New thread - /{{board}}/ </h2>
 <div class="ui center aligned container">
-<form action="/{{board}}/process-thread" method="post" class="ui form">
+<form action="/{{board}}/process-thread/" method="post" class="ui form">
     {% csrf_token %}
     <div class="field">
         {{ form.author.label_tag }}
